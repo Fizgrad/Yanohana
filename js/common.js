@@ -12,7 +12,7 @@ function renderHeader() {
     <a class="skip-link" href="#main">${getLanguage() === "en" ? "Skip to content" : "本文へ移動"}</a>
     <header class="site-header">
       <div class="site-header__inner container">
-        <a class="brand" href="${root}/index.html" aria-label="YANOHANA home"><span class="brand__mark">颜花</span><span>YANOHANA</span></a>
+        <a class="brand" href="${root}/index.html" aria-label="YANOHANA home"><span class="brand__mark" lang="zh-Hans">颜花</span><span>YANOHANA</span></a>
         <nav class="main-nav" id="main-nav" aria-label="${getLanguage() === "en" ? "Main navigation" : "メインナビゲーション"}">
           <ul>
             <li><a href="${root}/products/index.html" ${current === "products" ? 'aria-current="page"' : ""} data-i18n="navProducts"></a></li>
@@ -49,7 +49,7 @@ function renderFooter() {
   if (!host) return;
   host.innerHTML = `<footer class="site-footer"><div class="container">
     <div class="footer-grid">
-      <div><h2>颜花 YANOHANA</h2><p data-i18n="footerIntro"></p><p><a href="mailto:support@yanohana.example">support@yanohana.example</a></p></div>
+      <div><h2 class="brand-title"><span class="brand-title__han" lang="zh-Hans">颜花</span><span>YANOHANA</span></h2><p data-i18n="footerIntro"></p><p><a href="mailto:support@yanohana.example">support@yanohana.example</a></p></div>
       <div><h3 data-i18n="footerGuide"></h3><ul class="footer-links"><li><a href="${root}/legal/shipping.html" data-i18n="shipping"></a></li><li><a href="${root}/legal/returns.html" data-i18n="returns"></a></li><li><a href="${root}/legal/terms.html" data-i18n="terms"></a></li></ul></div>
       <div><h3 data-i18n="footerContact"></h3><ul class="footer-links"><li><a href="${root}/legal/privacy.html" data-i18n="privacy"></a></li><li><a href="${root}/legal/commerce.html" data-i18n="commerce"></a></li><li><a href="mailto:support@yanohana.example">Email</a></li><li><a href="#" aria-label="Instagram">Instagram</a></li></ul></div>
     </div><div class="footer-bottom">© ${new Date().getFullYear()} YANOHANA. All rights reserved.</div>

@@ -13,6 +13,9 @@ test("Japanese and English storefronts expose all products", async ({ page }) =>
   await page.goto("/");
   await expect(page.locator("[data-home-products] .home-product")).toHaveCount(10);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("一輪ずつ");
+  const brandFonts = await page.locator(".brand__mark, .brand-title__han").evaluateAll((nodes) => nodes.map((node) => getComputedStyle(node).fontFamily));
+  expect(new Set(brandFonts).size).toBe(1);
+  expect(brandFonts[0]).toContain("Noto Serif SC");
   await page.screenshot({ path: "/tmp/yanohana-home-desktop.png", fullPage: true });
   await page.locator("[data-language-toggle]").click();
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Every flower");
