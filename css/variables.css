@@ -1,0 +1,20 @@
+:root {
+  --color-white: #fff;
+  --color-ink: #2d2d2d;
+  --color-muted: #686b68;
+  --color-brand: #95c194;
+  --color-brand-dark: #697b49;
+  --color-brand-hover: #596b3c;
+  --color-brand-pale: #f4f8f3;
+  --color-surface: #f7f7f5;
+  --color-border: #e2e5df;
+  --color-danger: #a74b4b;
+  --color-focus: #335e35;
+  --font-serif: "Noto Serif JP", "Yu Mincho", serif;
+  --font-sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  --radius-card: 8px;
+  --radius-control: 4px;
+  --container: 1180px;
+  --header-height: 72px;
+  --space-section: clamp(64px, 9vw, 112px);
+}

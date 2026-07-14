@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="花材、数量、包装を選んで、あなただけのYANOHANAをカスタマイズ。"><title>カスタマイズ | YANOHANA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css"><link rel="stylesheet" href="../css/components.css"><link rel="stylesheet" href="../css/layout.css"><link rel="stylesheet" href="../css/customize.css">
+</head>
+<body data-root=".." data-page="customize">
+  <div data-site-header></div>
+  <main id="main" class="page-main">
+    <div class="customize-loading container" data-customize-loading><div class="status-box">Loading…</div></div>
+    <div class="customize-page" data-customize-page hidden>
+      <header class="customize-header"><div class="container"><nav class="breadcrumb"><a href="../index.html" data-i18n="home"></a> / <a href="index.html" data-i18n="productList"></a> / <span data-product-name></span></nav><a class="back-link" href="index.html">← <span data-i18n="backProducts"></span></a><h1 data-product-name></h1><p data-product-description class="muted"></p></div></header>
+      <div class="container customize-grid">
+        <section class="customize-controls" aria-labelledby="flower-heading">
+          <div class="control-section">
+            <div class="control-heading"><div><p class="step-number">01</p><h2 id="flower-heading" data-i18n="chooseFlowers"></h2></div><span class="selected-count" data-selected-count></span></div>
+            <p class="muted limit-copy" data-flower-limit></p>
+            <div class="flower-search"><label class="visually-hidden" for="flower-search" data-i18n="searchFlowers"></label><input class="input" id="flower-search" type="search" data-i18n-placeholder="searchFlowers" autocomplete="off"><button class="text-link" type="button" data-clear-search data-i18n="clear"></button></div>
+            <div class="flower-groups" data-flower-groups></div>
+            <div class="status-box no-results" data-no-results hidden><p data-i18n="noResults"></p></div>
+          </div>
+
+          <div class="control-section">
+            <div class="control-heading"><div><p class="step-number">02</p><h2 data-i18n="wrappingOptions"></h2></div></div>
+            <fieldset class="option-group"><legend data-i18n="wrappingPaper"></legend><div class="swatch-options" data-wrapping-options></div></fieldset>
+            <fieldset class="option-group"><legend data-i18n="ribbon"></legend><div class="choice-options" data-ribbon-options></div></fieldset>
+            <fieldset class="option-group"><legend data-i18n="messageCard"></legend><label class="toggle-row"><input type="checkbox" data-message-card><span class="toggle" aria-hidden="true"></span><span data-card-label></span></label></fieldset>
+          </div>
+
+          <details class="notes-panel"><summary data-i18n="notes"></summary><p data-i18n="notesBody"></p></details>
+        </section>
+
+        <aside class="customize-summary" aria-label="Order estimate">
+          <div class="summary-sticky">
+            <div class="preview"><img data-preview-image src="" alt=""><span class="preview-label" data-i18n="composition"></span></div>
+            <div class="preview-thumbs" data-preview-thumbs></div>
+            <p class="preview-note" data-i18n="imageReference"></p>
+            <div class="summary-card">
+              <h2 data-product-name></h2>
+              <div class="composition-list" data-composition-list></div>
+              <dl class="price-lines">
+                <div><dt data-i18n="basePrice"></dt><dd data-base-price></dd></div>
+                <div><dt data-i18n="flowerSubtotal"></dt><dd data-flower-subtotal></dd></div>
+                <div><dt data-i18n="options"></dt><dd data-option-subtotal></dd></div>
+                <div class="rule"><dt data-i18n="itemSubtotal"></dt><dd data-item-subtotal></dd></div>
+                <div><dt data-i18n="weight"></dt><dd data-weight></dd></div>
+                <div><dt data-i18n="shippingEstimate"></dt><dd data-shipping></dd></div>
+                <div class="total-line"><dt data-i18n="estimatedTotal"></dt><dd data-estimated-total></dd></div>
+              </dl>
+              <button class="btn btn-block" type="button" data-add-cart disabled><span data-i18n="addToCart"></span></button>
+              <p class="summary-note"><span data-i18n="taxIncluded"></span> · <span data-i18n="inquiryOnly"></span></p>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div class="mobile-cart-bar"><div><small data-i18n="estimatedTotal"></small><strong data-mobile-total></strong></div><button class="btn" type="button" data-mobile-add disabled data-i18n="addToCart"></button></div>
+    </div>
+  </main>
+  <div data-site-footer></div>
+  <script type="module" src="../js/common.js"></script><script type="module" src="../js/customize.js"></script>
+</body>
+</html>

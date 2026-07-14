@@ -1,0 +1,49 @@
+@import url("./variables.css");
+
+.btn {
+  display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 22px; border: 1px solid var(--color-brand-dark); border-radius: var(--radius-control);
+  background: var(--color-brand-dark); color: #fff; cursor: pointer; font-weight: 700; line-height: 1.4;
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.btn:hover { border-color: var(--color-brand-hover); background: var(--color-brand-hover); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled, .btn[aria-disabled="true"] { border-color: #bfc5b8; background: #bfc5b8; cursor: not-allowed; }
+.btn-outline { background: transparent; color: var(--color-brand-dark); }
+.btn-outline:hover { color: #fff; }
+.btn-quiet { min-height: 38px; padding: 7px 12px; border-color: var(--color-border); background: #fff; color: var(--color-ink); font-size: .86rem; }
+.btn-quiet:hover { border-color: var(--color-brand); background: var(--color-brand-pale); color: var(--color-ink); }
+.btn-block { width: 100%; }
+.text-link { padding: 0; border: 0; border-bottom: 1px solid currentColor; background: none; color: var(--color-brand-dark); cursor: pointer; }
+.tag { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: var(--color-brand-pale); color: var(--color-brand-dark); font-size: .75rem; font-weight: 700; }
+.card { border: 1px solid var(--color-border); border-radius: var(--radius-card); background: #fff; }
+.product-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; transition: border-color .2s ease, transform .2s ease; }
+.product-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+.product-card__image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-brand-pale); }
+.product-card__image img { width: 100%; height: 100%; object-fit: contain; background: #fafafa; transition: transform .45s ease; }
+.product-card:hover .product-card__image img { transform: scale(1.025); }
+.product-card__body { display: flex; flex: 1; flex-direction: column; padding: 20px; }
+.product-card__body h3 { margin: 9px 0 7px; }
+.product-card__desc { flex: 1; color: var(--color-muted); font-size: .9rem; }
+.product-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; }
+.price { color: var(--color-brand-dark); font-size: 1.05rem; font-weight: 700; white-space: nowrap; }
+.field { display: grid; gap: 7px; }
+.field label, .field-label { font-size: .9rem; font-weight: 700; }
+.required { margin-left: 5px; color: var(--color-danger); font-size: .72rem; }
+.input, .textarea, .select {
+  width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid #cfd4cc; border-radius: var(--radius-control); background: #fff; color: var(--color-ink);
+}
+.textarea { min-height: 120px; resize: vertical; }
+.input[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--color-danger); }
+.field-error { min-height: 1.2em; margin: 0; color: var(--color-danger); font-size: .78rem; }
+.notice { padding: 14px 16px; border-left: 3px solid var(--color-brand); background: var(--color-brand-pale); color: #4e5747; font-size: .88rem; }
+.alert { padding: 14px 16px; border: 1px solid #e4bdbd; border-radius: var(--radius-control); background: #fff6f6; color: #7e3333; }
+.quantity { display: inline-flex; align-items: center; border: 1px solid var(--color-border); border-radius: var(--radius-control); background: #fff; }
+.quantity button { width: 36px; height: 36px; border: 0; background: transparent; cursor: pointer; font-size: 1.2rem; }
+.quantity output { min-width: 34px; text-align: center; font-weight: 700; }
+.loading { position: relative; pointer-events: none; }
+.loading::after { width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; content: ""; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.toast { position: fixed; z-index: 200; right: 22px; bottom: 22px; max-width: min(360px, calc(100vw - 44px)); padding: 14px 18px; border-radius: 6px; background: var(--color-ink); color: #fff; opacity: 0; transform: translateY(12px); transition: .2s ease; pointer-events: none; }
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+.image-fallback { width: 100%; height: 100%; display: grid; place-items: center; background: linear-gradient(145deg, #f4f8f3, #e8efe4); color: var(--color-brand-dark); }

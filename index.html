@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="YANOHANA — 花材と色を自由に組み合わせる、手作りシルクフラワーのカスタマイズショップ。">
+  <title>YANOHANA | あなただけのシルクフラワー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body data-root="." data-page="home">
+  <div data-site-header></div>
+  <main id="main" class="page-main">
+    <section class="hero">
+      <img class="hero__image" src="assets/images/hero-flowers.svg" alt="淡い色のシルクフラワーブーケ">
+      <div class="hero__shade"></div>
+      <div class="hero__content container">
+        <p class="hero__eyebrow" data-i18n="homeEyebrow"></p>
+        <h1 data-i18n="homeTitle"></h1>
+        <p class="hero__lead" data-i18n="homeLead"></p>
+        <div class="hero__actions"><a class="btn" href="products/index.html" data-i18n="startCustomize"></a><a class="hero__link" href="#collection" data-i18n="explore"></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="container">
+        <header class="section-heading"><p class="eyebrow" data-i18n="productsEyebrow"></p><h2 data-i18n="productEntrances"></h2><p class="muted" data-i18n="productIntro"></p></header>
+        <div class="home-products" data-home-products aria-live="polite"><div class="status-box">Loading…</div></div>
+      </div>
+    </section>
+
+    <section class="story section" id="story">
+      <div class="container story__grid">
+        <div class="story__copy"><p class="eyebrow" data-i18n="storyEyebrow"></p><h2 data-i18n="storyTitle"></h2><p data-i18n="storyBody1"></p><p data-i18n="storyBody2"></p><ul class="story__points"><li><span>01</span><span data-i18n="storyPoint1"></span></li><li><span>02</span><span data-i18n="storyPoint2"></span></li><li><span>03</span><span data-i18n="storyPoint3"></span></li></ul></div>
+        <div class="story__image-wrap"><img src="assets/images/story-craft.svg" alt="花を一つずつ手作りする工房のイメージ" loading="lazy"></div>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+  <script type="module" src="js/common.js"></script>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>
