@@ -17,7 +17,7 @@ let state = { selected: {}, wrapping: "white", ribbon: "none", messageCard: fals
 const flowerName = (flower) => getLanguage() === "en" ? (englishNames[flower.id] || flower.nameJa) : flower.nameJa;
 const selectedTotal = () => Object.values(state.selected).reduce((sum, qty) => sum + qty, 0);
 const selectedFlowers = () => flowers.filter((flower) => state.selected[flower.id] > 0).map((flower) => ({ id: flower.id, nameJa: flower.nameJa, nameEn: englishNames[flower.id] || flower.nameJa, priceCny: flower.priceCny, estimatedWeightG: flower.estimatedWeightG, qty: state.selected[flower.id] }));
-const currentItem = () => ({ productId: product.id, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: selectedFlowers(), wrapping: state.wrapping, ribbon: state.ribbon, messageCard: state.messageCard, quantity: 1, exchangeRateCnyToJpy: SITE_CONFIG.exchangeRateCnyToJpy });
+const currentItem = () => ({ productId: product.id, productSku: product.sku, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: selectedFlowers(), wrapping: state.wrapping, ribbon: state.ribbon, messageCard: state.messageCard, quantity: 1, exchangeRateCnyToJpy: SITE_CONFIG.exchangeRateCnyToJpy });
 
 function restoreEdit() {
   if (!editCartId) return;
@@ -134,7 +134,10 @@ try {
   flowers = allFlowers.filter((flower) => product.availableFlowerCategories.includes(flower.category));
   restoreEdit();
   document.querySelectorAll("[data-product-name]").forEach((node) => { node.textContent = localized(product, "name"); });
+  document.querySelector("[data-product-sku]").textContent = product.sku || "";
   document.querySelector("[data-product-description]").textContent = localized(product, "description");
+  const details = product.publicDetails || {};
+  document.querySelector("[data-product-facts]").innerHTML = [["detailMaterial","material"],["detailSize","size"],["detailWeight","weight"],["detailScene","scene"]].map(([labelKey, field]) => `<div><dt>${t(labelKey)}</dt><dd>${escapeHtml(localized(details, field))}</dd></div>`).join("");
   document.querySelector("[data-preview-image]").src = `${rootPath()}/${product.image}`;
   document.querySelector("[data-preview-image]").alt = localized(product, "name");
   document.querySelector("[data-flower-limit]").textContent = t("flowerLimit", { max: SITE_CONFIG.maxFlowerPerType, total: SITE_CONFIG.maxFlowersPerItem });

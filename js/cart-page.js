@@ -25,7 +25,7 @@ function validateItems(items) {
     });
     if (!cleanFlowers.length) { changed = true; return []; }
     if (item.basePriceJpy !== product.basePriceJpy) changed = true;
-    return [{ ...item, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: cleanFlowers }];
+    return [{ ...item, productSku: product.sku, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: cleanFlowers }];
   });
   if (changed || valid.length !== items.length) { cartStore.setItems(valid); showToast(t("invalidRemoved")); }
   return valid;
@@ -47,7 +47,7 @@ function renderItem(item) {
   const calculation = calculateItem(item);
   const flowers = item.flowers.map((flower) => `${escapeHtml(flowerName(flower))} × ${flower.qty}`).join(getLanguage() === "en" ? ", " : "、");
   const options = `${t("wrappingPaper")}: ${wrapLabel(item.wrapping)} / ${t("ribbon")}: ${ribbonLabel(item.ribbon)} / ${t("messageCard")}: ${item.messageCard ? (getLanguage() === "en" ? "Yes" : "あり") : t("none")}`;
-  return `<article class="card cart-item" data-cart-id="${item.cartId}"><div class="cart-item__image"><img src="${rootPath()}/${product?.image || item.previewImage}" alt="${escapeHtml(productName(item, product))}"></div><div class="cart-item__body"><div><h2>${escapeHtml(productName(item, product))}</h2><div class="cart-item__details"><span>${flowers}</span><span>${escapeHtml(options)}</span></div><div class="cart-item__actions"><a class="text-link" href="products/customize.html?id=${encodeURIComponent(item.productId)}&amp;edit=${encodeURIComponent(item.cartId)}">${t("edit")}</a><button class="text-link" type="button" data-action="remove">${t("remove")}</button></div></div><div class="cart-item__price"><strong>${yen(calculation.lineSubtotalJpy)}</strong><div><span class="visually-hidden">${t("quantity")}</span><div class="quantity"><button type="button" data-action="decrease" aria-label="−">−</button><output>${item.quantity}</output><button type="button" data-action="increase" aria-label="+">+</button></div></div></div></div></article>`;
+  return `<article class="card cart-item" data-cart-id="${item.cartId}"><div class="cart-item__image"><img src="${rootPath()}/${product?.image || item.previewImage}" alt="${escapeHtml(productName(item, product))}"></div><div class="cart-item__body"><div><span class="product-sku-tag">${escapeHtml(product?.sku || item.productSku || "")}</span><h2>${escapeHtml(productName(item, product))}</h2><div class="cart-item__details"><span>${flowers}</span><span>${escapeHtml(options)}</span></div><div class="cart-item__actions"><a class="text-link" href="products/customize.html?id=${encodeURIComponent(item.productId)}&amp;edit=${encodeURIComponent(item.cartId)}">${t("edit")}</a><button class="text-link" type="button" data-action="remove">${t("remove")}</button></div></div><div class="cart-item__price"><strong>${yen(calculation.lineSubtotalJpy)}</strong><div><span class="visually-hidden">${t("quantity")}</span><div class="quantity"><button type="button" data-action="decrease" aria-label="−">−</button><output>${item.quantity}</output><button type="button" data-action="increase" aria-label="+">+</button></div></div></div></div></article>`;
 }
 
 host.addEventListener("click", (event) => {

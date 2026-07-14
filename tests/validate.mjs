@@ -15,11 +15,15 @@ assert.equal(flowers.length, 68, "The flower catalog must contain 68 entries");
 assert.equal(new Set(products.map((item) => item.id)).size, products.length, "Product IDs must be unique");
 assert.equal(new Set(flowers.map((item) => item.id)).size, flowers.length, "Flower IDs must be unique");
 assert.equal(Object.keys(englishNames).length, flowers.length, "Every flower needs an English name");
+assert.deepEqual(products.map((item) => item.sku), ["SF-001","SF-002","SF-003","SF-004","SF-005","SF-006","SF-007","SF-008","SF-009","SF-010"]);
+assert.deepEqual(products.map((item) => item.basePriceJpy), [2200,6980,5980,2200,2980,2200,5980,17800,7980,10800]);
+assert.doesNotMatch(JSON.stringify(products), /priceUsd|unitCost|grossMargin|targetNetReceipt/i, "Internal pricing data must not be published");
 
 for (const product of products) {
   assert.ok(product.nameJa && product.nameEn, `${product.id} needs Japanese and English names`);
   assert.ok(existsSync(join(projectRoot, product.image)), `${product.id} image does not exist`);
   assert.ok(product.availableFlowerCategories.length > 0, `${product.id} needs flower eligibility rules`);
+  assert.ok(product.publicDetails?.materialJa && product.publicDetails?.materialEn, `${product.id} needs bilingual public details`);
   for (const galleryItem of product.gallery || []) assert.ok(existsSync(join(projectRoot, galleryItem.image)), `${product.id} gallery image does not exist`);
 }
 for (const flower of flowers) {

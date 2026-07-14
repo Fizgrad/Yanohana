@@ -5,6 +5,7 @@
 .filter-tabs button.is-active { background: var(--color-brand-dark); color: #fff; }
 .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .products-grid > .status-box { grid-column: 1 / -1; }
+.product-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
 .product-card.is-unavailable { opacity: .68; }
 @media (max-width: 1023px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .products-grid { grid-template-columns: 1fr; } .product-card__foot { align-items: flex-end; } }

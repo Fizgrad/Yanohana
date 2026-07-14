@@ -20,7 +20,7 @@ function reconcileCart() {
       return [{ id: master.id, nameJa: master.nameJa, nameEn: englishNames[master.id] || master.nameJa, priceCny: master.priceCny, estimatedWeightG: master.estimatedWeightG, qty: Math.min(SITE_CONFIG.maxFlowerPerType, Math.max(1, Number(saved.qty) || 1)) }];
     });
     if (!cleanFlowers.length) return [];
-    return [{ ...item, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: cleanFlowers }];
+    return [{ ...item, productSku: product.sku, productNameJa: product.nameJa, productNameEn: product.nameEn, basePriceJpy: product.basePriceJpy, previewImage: product.image, flowers: cleanFlowers }];
   });
   cartStore.setItems(clean);
   return clean;
